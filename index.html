@@ -17,34 +17,41 @@
         </div>
 
         <div class="isi" v-if="klik">
-            <div class="datapokemon" v-for="item in listPokemon" :key="item" @click="viewDetailPokemon(item.name)"> <!-- v-for="(name, index) in listPokemon" :key="name" -->
-                <img :src="item.sprites.front_default" alt="">
-                <label for="">{{item.name}}</label>
+            <div style="width: fit-content; margin: 10px;">
+                <div class="datapokemon " v-for="item in listPokemon" @click="viewDetailPokemon(item.name)">
+                    <img :src="item.sprites.front_default" alt="pokemon" style="width: 100%;">
+                    <label for="">{{item.name}}</label>
+                </div>
             </div>
         </div>
 
         <div class="isi" v-if="!klik">
-            <button @click="klik=true" class="md-5"> back</button>
-            <div class="row">
-                <div class="col-12 col-md-6 card">
+            <button @click="klik=true" class="buttonBack"> back</button>
+
+            <div style="width: 90%; float: left; margin-left: 10px; ">
+                <div class="card">
                     <img :src="detailPokemon.sprites.front_default" alt="">
                 </div>
-                <div class="col-12 col-md-6">
-                    <h1> {{ detailPokemon.name }} </h1>
-                    <div style="display: flex;">
-                        <label style="float: left;">type :</label>
-                        <p style="float: left; margin-left: 5px; padding: 10px; border-radius: 5px; background-color: yellow;" v-for="i in detailPokemon.types" >
-                            {{i.type.name}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>Skill :</p>
-                        <p style="float: left; padding-left: 3px;" v-for="item in detailPokemon.moves" >
-                            {{item.move.name}} |
-                        </p>
-                    </div>
-                        
+
+                <div class="namepokemon">
+                    <p>Name Pokemon</p>
+                    <p class="detailNama"> {{ detailPokemon.name }} </p>
                 </div>
+                
+                <div style="display: flex; width: 90%; margin: auto; color: aliceblue;">
+                    <label style="float: left;">type :</label>
+                    <p style="float: left; margin-left: 5px; margin-top: 10px; padding: 5px; border-radius: 5px; background-color: rgb(75, 75, 34);" v-for="i in detailPokemon.types" >
+                        {{i.type.name}}
+                    </p>
+                </div>
+
+                <div style="width: 90%; margin: auto; color: aliceblue;">
+                    <p>Skill :</p>
+                    <p style="float: left; padding-left: 3px;" v-for="item in detailPokemon.moves" >
+                        {{item.move.name}} |
+                    </p>
+                </div>
+                
             </div>
             
         </div>
@@ -96,34 +103,68 @@
 
 
 <style>
+
+    body{
+        background-color: rgb(169, 169, 169);
+    }
+
+    .namepokemon{
+        width: 90%;
+        height: 80px;
+        padding: 5px;
+        margin: auto;
+        border-radius: 10px;
+        background-color: rgb(176, 134, 78);
+        text-align: center;
+    }
+
+    .detailNama{
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .buttonBack{
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin-left: 10px;
+    }
     .card{
-        background-color: blue;
-        width: 200px;
-        height: 200px;
-        margin-top: 10px;
+        background-color: rgb(205, 205, 239);
+        width: 100px;
+        height: 100px;
+        margin: 10px auto 5px auto;
+        border-radius: 10px;
     }
 
     .judul{
-        background-color: aqua;
-        width: 70%;
-        margin: auto;
+        background-color: rgb(33, 199, 199);
+        width: 90%;
+        margin: 5px auto 0px auto;
         display: flex;
-        height: 200px;
+        height: 100px;
+        border-radius: 10px;
     }
     .judul h1{
         margin: auto;
     }
+
     .isi {
-        width: 70%;
-        height: 100px;
-        margin: auto;
-        
+        width: 90%;
+        height: fit-content;
+        padding: 2px;
+        display: flex;
+        border-radius: 10px;
+        margin: 5px auto 5px auto;
+        background-color: rgb(45, 46, 65);
     }
+
     .datapokemon{
-        background-color: aquamarine;
+        background-color: rgb(15, 212, 146);
         float: left;
-        padding: 10px;
-        width: 300px;
+        padding: 30px;
+        height:200px;
+        width: 200px;
         font-size: medium;
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
         margin: 5px;
